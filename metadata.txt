@@ -1,0 +1,47 @@
+# This file contains metadata for your plugin.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
+[general]
+name=Corridor Detection
+qgisMinimumVersion=3.0
+description=This plugin detects corridors on road network
+version=0.1
+author=Metehan Ergen / Hacettepe University - Politecnico di Milano
+email=metehan.ergenn@gmail.com
+
+about=This plugin detects corridor(s) on road network data (line vector data). Also it helps to do some arrangements on the found corridor.
+
+tracker=http://bugs
+repository=http://repo
+# End of mandatory metadata
+
+# Recommended items:
+
+hasProcessingProvider=no
+# Uncomment the following line and add your changelog:
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=vector, line, polyline, network analysis, network,python
+
+homepage=https://github.com/metecad
+category=Vector
+icon=icon.png
+# experimental flag
+experimental=True
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
+
+# Since QGIS 3.8, a comma separated list of plugins to be installed
+# (or upgraded) can be specified.
+# Check the documentation for more information.
+# plugin_dependencies=
+
+Category of the plugin: Raster, Vector, Database or Web
+# category=
+
+# If the plugin can run on QGIS Server.
+server=False
+

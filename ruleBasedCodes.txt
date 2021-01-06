@@ -1,0 +1,76 @@
+"""
+        #Configure label settings
+        settings = QgsPalLayerSettings()
+        settings.fieldName = 'myFieldName'
+        textFormat = QgsTextFormat()
+        textFormat.setSize(10)
+        settings.setFormat(textFormat)
+        #create and append a new rule
+        root = QgsRuleBasedLabeling.Rule(QgsPalLayerSettings())
+        rule = QgsRuleBasedLabeling.Rule(settings)
+        rule.setDescription(fieldName)
+        rule.setFilterExpression('myExpression')
+        root.appendChild(rule)
+        #Apply label configuration
+        rules = QgsRuleBasedLabeling(root)
+        myLayer.setLabeling(rules)
+        myLayer.triggerRepaint()
+        """
+
+        """
+        # Might not work
+
+        if check == False:
+            lines = [feat for feat in self.selectedLineLayer.getFeatures()]
+
+            self.selectedLineLayer.startEditing()
+            for line in lines:
+                if line["visited"] != qgis.core.NULL
+                    line["visited"] = qgis.core.NULL
+                    self.selectedLineLayer.updateFeature(line)
+            self.selectedLineLayer.commitChanges()
+
+            # Load qml file to layer on interface
+            stylePath = "/styles/layerStyle.qml"
+            self.selectedLineLayer.loadNamedStyle(os.path.dirname(__file__) + stylePath)
+        """
+        """
+        # Rule based symbology
+       
+        field = 'visited'
+        idx = self.selectedLineLayer.fields().indexFromName(field)
+        
+        
+        if not idx:
+            print ('{} does not exist'.format(field))
+        else:
+            print ('{} does exist'.format(field))
+        
+        
+        # define some rules: label, expression, color name, (min scale, max scale)
+        poi_rules = (
+        ('Visited', '"{}" = 1'.format(field), 'red', None),
+        ('Non-Visited', '"{}" = 0'.format(field), '#C0C0C0', None),)
+        # create a new rule-based renderer
+        symbol = QgsSymbol.defaultSymbol(self.selectedLineLayer.geometryType())
+        renderer = QgsRuleBasedRenderer(symbol)
+        # get the "root" rule
+        root_rule = renderer.rootRule()
+        for label, expression, color_name, scale in poi_rules:
+            # create a clone (i.e. a copy) of the default rule
+            rule = root_rule.children()[0].clone()
+            # set the label, expression and color
+            rule.setLabel(label)
+            rule.setFilterExpression(expression)
+            rule.symbol().setColor(QColor(color_name))
+            # set the scale limits if they have been specified
+            if scale is not None:
+                rule.setMinimumScale(scale[0])
+                rule.setMaximumScale(scale[1])
+            # append the rule to the list of rules
+            root_rule.appendChild(rule)
+        # delete the default rule
+        root_rule.removeChildAt(0)
+        # apply the renderer to the layer
+        self.selectedLineLayer.setRenderer(renderer)
+        """

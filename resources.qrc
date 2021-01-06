@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/plugins/corridor_detection" >
+        <file>icon.png</file>
+		<file>hacettepe_logo.png</file>
+    </qresource>
+</RCC>
